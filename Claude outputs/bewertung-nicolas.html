@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bewertung Nicolas</title>
+<style>
+:root{
+  --bg:#f6f6f4; --card:#ffffff; --ink:#1d1d1b; --muted:#6b6b66; --line:#deded8;
+  --accent:#1f5fbf; --accent-ink:#ffffff; --sel:#1f5fbf; --warn:#b45309; --ok:#15803d;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161615; --card:#21211f; --ink:#ecece8; --muted:#a3a39c; --line:#3a3a36;
+    --accent:#6ea0ff; --accent-ink:#0b1220; --sel:#6ea0ff; --warn:#f59e0b; --ok:#4ade80;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161615; --card:#21211f; --ink:#ecece8; --muted:#a3a39c; --line:#3a3a36;
+  --accent:#6ea0ff; --accent-ink:#0b1220; --sel:#6ea0ff; --warn:#f59e0b; --ok:#4ade80;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+header.bar{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header.bar h1{font-size:16px;margin:0;font-weight:650}
+.progress{font-variant-numeric:tabular-nums;color:var(--muted)}
+.progress b{color:var(--ink)}
+.spacer{flex:1}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:7px 14px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+main{max-width:1180px;margin:0 auto;padding:16px}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:16px}
+.intro p{margin:.3em 0}
+details summary{cursor:pointer;font-weight:600;margin-top:8px}
+table.scale{border-collapse:collapse;width:100%;margin-top:8px;font-size:13px}
+table.scale th,table.scale td{border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top}
+table.scale th{background:var(--bg)}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:18px}
+section.card h2{font-size:17px;margin:0 0 4px}
+.prompt{color:var(--muted);font-size:14px;margin:0 0 12px}
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.tools{grid-template-columns:1fr}}
+.tool h3{font-size:14px;margin:0 0 6px;font-weight:650}
+.imgbox{background:var(--bg);border:1px solid var(--line);border-radius:8px;height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in}
+.imgbox img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pair .imgbox{height:200px}
+.cap{font-size:12px;color:var(--muted);margin:3px 0 0}
+.crit{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.crit .lab{width:128px;font-size:13px}
+.crit .lab small{display:block;color:var(--muted);font-size:11px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{width:36px;height:32px;border:0;border-right:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:600}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--sel);color:var(--accent-ink)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.facts{font-size:13px;margin:6px 0 0;padding-left:18px}
+.facts li{margin:2px 0}
+.links{font-size:12px;margin-top:6px}
+.links a{color:var(--accent)}
+.anchor{font-size:12px;color:var(--muted);margin:8px 0 0;border-left:3px solid var(--line);padding-left:8px}
+#out{width:100%;min-height:140px;font:12px/1.4 ui-monospace,Menlo,monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px}
+.status{font-size:13px;margin-left:8px}
+.status.ok{color:var(--ok)} .status.warn{color:var(--warn)}
+.missing{outline:2px solid var(--warn);outline-offset:2px;border-radius:8px}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:20;cursor:zoom-out;padding:16px}
+#lightbox img{max-width:100%;max-height:100%;object-fit:contain}
+textarea.note{width:100%;min-height:70px;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px}
+</style>
+</head>
+<body>
+<header class="bar">
+  <h1>Bewertung K1–K10 · Nicolas Hunger</h1>
+  <span class="progress"><b id="cnt">0</b> / 90 Werte</span>
+  <span class="spacer"></span>
+  <button class="btn ghost" id="jump">Nächster offener Wert</button>
+  <button class="btn" id="copy2">Fertig: Werte kopieren</button>
+</header>
+<main>
+  <div class="intro">
+    <p><b>So geht's:</b> Pro Bild und Kriterium ganze Punkte von 1 bis 5 anklicken. Bewerte nach deiner eigenen Einschätzung (Risiko R3: zwei unabhängige Bewertungen, es zählt der Mittelwert). Ein Klick aufs Bild vergrössert es.</p>
+    <p>5 = sehr gut · 4 = gut · 3 = genügend · 2 = schwach · 1 = ungenügend. Fährst du mit der Maus über ein Kriterium, siehst du, wofür es 5, 3 und 1 Punkte gibt.</p>
+    <p>Deine Eingaben bleiben in diesem Browser gespeichert. Am Schluss unten auf «Werte kopieren» klicken und den Text in den Chat einfügen.</p>
+    <details><summary>Bewertungsskala (aus dem Lastenheft)</summary><div id="scale"></div></details>
+  </div>
+  <div id="app"></div>
+  <section class="card" id="finish">
+    <h2>Fertig</h2>
+    <p class="prompt">Optional: Bemerkungen zu deiner Bewertung (z.B. was dir aufgefallen ist). Danach kopieren und in den Chat einfügen.</p>
+    <textarea class="note" id="note" placeholder="Bemerkungen (optional)"></textarea>
+    <p style="margin:10px 0 6px"><button class="btn" id="copy">Werte kopieren</button><span class="status" id="status"></span></p>
+    <textarea id="out" readonly></textarea>
+  </section>
+</main>
+<div id="lightbox"><img alt=""></div>
+<script>
+const TOOLS=[
+  {id:"gemini",name:"Gemini",ext:"jpeg"},
+  {id:"chatgpt",name:"ChatGPT",ext:"png"},
+  {id:"leonardo",name:"Leonardo.Ai",ext:"jpg"}
+];
+const PROMPTS=[
+  ["P1","festlich – Geburtstagseinladung","Erstelle ein Bild für eine Geburtstagseinladung: ein Schokoladenkuchen mit brennenden Kerzen auf einem Holztisch, daneben drei Luftballone in Rot, Gelb und Blau. Stil: Aquarell. Oben im Bild steht der Text «Lass uns feiern!»."],
+  ["P2","festlich – Weihnachtskarte","Erstelle eine Weihnachtskarte: ein verschneites Bergdorf am Abend mit beleuchteten Fenstern und einem geschmückten Tannenbaum auf dem Dorfplatz. Stil: realistisches Foto. In der Mitte steht der Text «Fröhliche Weihnachten»."],
+  ["P3","Arbeit – Titelbild Präsentation","Erstelle ein Titelbild für eine Präsentation über Teamarbeit: vier Personen sitzen an einem runden Tisch in einem hellen Büro und schauen auf ein Whiteboard mit Notizen. Stil: flache Vektor-Illustration in Blau- und Grautönen. Oben steht der Text «Gemeinsam ans Ziel»."],
+  ["P4","Arbeit – Einladung Workshop","Erstelle ein Bild für die Einladung zu einem Team-Workshop: eine Pinnwand mit bunten Haftnotizen, Glühbirnen-Symbolen und Pfeilen. Stil: 3D-Illustration mit weichen Farben. In der Mitte steht der Text «Workshop Kick-off»."],
+  ["P5","humorvoll – Team-Chat","Erstelle ein lustiges Bild für den Team-Chat: eine müde Katze mit Brille sitzt am Montagmorgen vor einem Computer und hält eine riesige Kaffeetasse. Stil: Comic. In einer Sprechblase steht «Ist schon Freitag?»."],
+  ["P6","humorvoll – Abwesenheitsnotiz","Erstelle ein lustiges Bild für eine Abwesenheitsnotiz: ein Faultier mit Sonnenbrille liegt in einer Hängematte zwischen zwei Palmen, daneben ein zugeklappter Laptop im Sand. Stil: Retro-Postkarte aus den 1960er-Jahren. Oben steht der Text «Zurück am Montag»."]
+];
+const FOLGE="Ändere nur die Farben der Luftballone zu Grün, Lila und Orange. Alles andere soll gleich bleiben.";
+const CRIT={
+  K1:["Bildqualität","20 %","scharf und stimmig, keine sichtbaren Fehler (z.B. Hände, Gesichter)","brauchbar, kleine Fehler fallen beim genauen Hinsehen auf","deutliche Fehler oder unscharf, nicht verwendbar"],
+  K2:["Prompt-Treue","15 %","alle Elemente des Prompts sind umgesetzt","Hauptmotiv stimmt, einzelne Details fehlen oder sind falsch","Bild passt kaum zum Prompt"],
+  K3:["Text im Bild","10 %","Text vollständig und fehlerfrei","Text lesbar, aber mit kleinen Fehlern","Text fehlt oder ist unleserlich"],
+  K4:["Stilvielfalt","10 %","verlangter Stil (z.B. Foto, Aquarell, Comic) genau getroffen","Stil erkennbar, aber nicht durchgehend umgesetzt","Stilvorgabe ignoriert"],
+  K5:["Anpassen per Folge-Prompt","5 %","Änderung umgesetzt, der Rest des Bildes bleibt gleich","Änderung umgesetzt, aber das Bild verändert sich stark","Änderung nicht möglich oder nicht umgesetzt"],
+  K6:["Kostenlos nutzbar (Muss)","10 %","alle Funktionen gratis, ohne Abo und ohne Zahlungsmittel","gratis nutzbar, aber mit häufigen Hinweisen auf ein Abo","Abo oder Zahlungsmittel nötig: Muss nicht erfüllt, Tool scheidet aus"],
+  K7:["Gratis-Kontingent","5 %","mehr als 20 Bilder pro Tag","5–9 Bilder pro Tag","höchstens 2 Bilder pro Tag"],
+  K8:["Benutzerfreundlichkeit","10 %","Registrierung und erstes Bild ohne Hilfe in unter 5 Minuten","erstes Bild mit etwas Suchen in 5–10 Minuten","unübersichtlich, ohne Hilfe nicht zu schaffen"],
+  K9:["Nutzungsrechte und Datenschutz (Muss)","10 %","private und berufliche Nutzung erlaubt, Bilder bleiben privat","Nutzung erlaubt, aber Bilder standardmässig öffentlich","berufliche Nutzung nicht erlaubt: Muss nicht erfüllt, Tool scheidet aus"],
+  K10:["Download und Wasserzeichen","5 %","Download in voller Auflösung, ohne sichtbares Wasserzeichen","Download möglich, aber kleines Wasserzeichen oder geringe Auflösung","kein Download oder grosses, störendes Wasserzeichen"]
+};
+// Fakten aus Testprotokoll (Anhang B), Nutzwertanalyse und Muss-Prüfung – ohne Punkte
+const FACTS={
+  gemini:{
+    K6:["Gratis nutzbar mit Google-Konto, ohne Abo und ohne Zahlungsmittel."],
+    K7:["Google nennt für Gratis-Nutzer keine feste Bildzahl, nur «Standardlimits»; das Kontingent wird alle 5 Stunden aktualisiert, bis ein Wochenlimit erreicht ist (Google o. J.).","Im Test (7 Bilder) kein Limit erreicht."],
+    K8:["Modell «Gemini Automatic» mit Werkzeug «Bilder», Chat-Oberfläche; Folge-Prompt im gleichen Chat."],
+    K9:["Nachweise zu Nutzungsrechten, Training, Speicherung der Chats und Mindestalter: Screenshots unten."],
+    K10:["Download als JPEG, 1408 × 768 Pixel (P3: 1376 × 768). Wasserzeichen: Bilder selbst prüfen."]
+  },
+  chatgpt:{
+    K6:["Gratis-Plan, ohne Abo und ohne Zahlungsmittel."],
+    K7:["Im Test nach 5 Bildern Tageslimit erreicht; laut Meldung Zurücksetzen um 1:00 Uhr (Abbildung B1)."],
+    K8:["Chat-Oberfläche, Modell wird im Gratis-Plan nicht angezeigt; Folge-Prompt im gleichen Chat. Registrierung: siehe Kurzanleitung (Abbildung 3)."],
+    K9:["Erzeugte Inhalte gehören den Nutzenden, private und berufliche Nutzung erlaubt (OpenAI o. J.).","Training mit den eigenen Chats lässt sich in den Einstellungen ausschalten. Mindestalter 13, unter 18 mit Zustimmung der Eltern."],
+    K10:["Download als PNG, 1024 × 1536, 1536 × 1024 oder 1254 × 1254 Pixel. Wasserzeichen: Bilder selbst prüfen."]
+  },
+  leonardo:{
+    K6:["Gratis-Plan mit 150 Tokens pro Tag, ohne Abo und ohne Zahlungsmittel."],
+    K7:["150 Tokens pro Tag; im Auto-Modus 8 Tokens pro Bild (ca. 18 Bilder). Mit Referenzbild wählte Leonardo.Ai «Nano Banana» (40 Tokens)."],
+    K8:["Eigene Oberfläche mit Einstellungen (Modell, Stil, Format), kein Chatverlauf.","Folge-Prompt: Der erste Versuch ohne Referenzbild ergab ein neues Bild (Heissluftballon); erst mit P1 als Referenzbild klappte die Anpassung."],
+    K9:["Nutzungsbedingungen (Ziffer 8.7) und Hilfe-Artikel widersprechen sich beim Eigentum an den Bildern.","Gratis-Bilder sind öffentlich; privat nur im Bezahl-Plan. Kommerzielle Nutzung in beiden Plänen erlaubt."],
+    K10:["Download als JPEG, 1024 × 1024 Pixel. Im Testprotokoll vermerkt: Leonardo.Ai P2 zeigt unten rechts ein Gemini-Wasserzeichen."]
+  }
+};
+const SHOTS={
+  gemini:["p1-2026-10-12- 00.49.04.png","p2-2026-10-12-01.33.56.png","p3-2026-10-12- 01.41.13.png","p4-2026-10-12-01.52.09.png","p5-2026-10-12-02.03.47.png","p6-2026-10-12- 02.09.24.png","folge-p1-2026-10-12- 01.21.11.png"],
+  chatgpt:["p1-2026-10-12- 01.01.27.png","p2-2026-10-12- 01.35.17.png","p3-2026-10-12-01.44.09.png","p4-2026-10-12-01.53.08.png","p5-2026-10-12- 15.21.58.png","p6-2026-10-12- 15.24.17.png","folge-p1-2026-10-12- 01.22.53.png","reach-of-limit-1.png"],
+  leonardo:["p1-2026-10-12- 01.03.38.png","p2-2026-10-12-01.36.57.png","p3-2026-10-12- 01.47.03.png","p4-2026-10-12- 01.54.50.png","p5-2026-10-12- 02.04.52.png","p6-2026-10-12- 02.13.27.png","Screenshot 2026-10-12 at 02.15.14.png"]
+};
+const MUSS={
+  gemini:["gemini-kostenlos.png","copy-rights.png","training.png","how-conversation-is-saved.png","who-reads-conversation.png","minimum-age.png"],
+  chatgpt:["chat-gpt-free.png","who-owns-content.png","training-based-conversation.png","settings-for-deactivating-training.png","registration-age.png","jurisdiction-of-tos.png"],
+  leonardo:["leonardo-price-plans.png","leonardo-current-plant.png","commercial-use.png","both-plans-can-use-pictures-for-commercial-use.png","who-owns-content.png","leonardo-owns-your-noodle.png","leonardo-owns-public-pictures.png","free-pictures-are-public.png","pictures-are-private-with-paid-plan.png","training-is-allowed.png","minimum-age.png","last-updated.png"]
+};
+const KEY="m306-bewertung-nicolas-v1";
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const img=(tool,file)=>"../tests/"+tool+"/"+encodeURIComponent(file);
+const tip=k=>`${k} ${CRIT[k][0]} (${CRIT[k][1]})\n5 = ${CRIT[k][2]}\n3 = ${CRIT[k][3]}\n1 = ${CRIT[k][4]}\n(4 und 2 sinngemäss)`;
+function el(tag,attrs={},html=""){const e=document.createElement(tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(html)e.innerHTML=html;return e}
+function seg(id){
+  const s=el("div",{class:"seg",role:"group","data-id":id});
+  for(let v=1;v<=5;v++){
+    const b=el("button",{type:"button","aria-label":id+" = "+v},String(v));
+    if(S[id]===v)b.classList.add("on");
+    b.onclick=()=>{S[id]=(S[id]===v?undefined:v);if(S[id]===undefined)delete S[id];save();s.querySelectorAll("button").forEach((x,i)=>x.classList.toggle("on",S[id]===i+1));s.parentElement.classList.remove("missing");update()};
+    s.appendChild(b)
+  }
+  return s
+}
+function critRow(k,id){
+  const r=el("div",{class:"crit"});
+  const l=el("div",{class:"lab",title:tip(k)},`${k} ${CRIT[k][0]}<small>${CRIT[k][1]} · Maus drüber = Skala</small>`);
+  r.appendChild(l);r.appendChild(seg(id));return r
+}
+function imgBox(src,alt){
+  const b=el("div",{class:"imgbox"});const i=el("img",{src,alt,loading:"lazy"});
+  i.onerror=()=>{b.innerHTML='<span class="cap">Bild nicht gefunden: '+src+'</span>'};
+  b.appendChild(i);b.onclick=()=>openLB(src);return b
+}
+function linkList(tool,files,dir){
+  const d=el("div",{class:"links"});
+  d.innerHTML=files.map((f,i)=>`<a href="${dir}${encodeURIComponent(f)}" target="_blank">${f.replace(/\.png$/,"")}</a>`).join(" · ");
+  return d
+}
+const app=document.getElementById("app");
+// Skala
+(function(){let h='<table class="scale"><tr><th>#</th><th>5 Punkte</th><th>3 Punkte</th><th>1 Punkt</th></tr>';for(const k in CRIT)h+=`<tr><td><b>${k}</b> ${CRIT[k][0]}</td><td>${CRIT[k][2]}</td><td>${CRIT[k][3]}</td><td>${CRIT[k][4]}</td></tr>`;h+='</table><p class="cap">Werte dazwischen (4 und 2 Punkte) sinngemäss.</p>';document.getElementById("scale").innerHTML=h})();
+// P1–P6
+PROMPTS.forEach(([p,anlass,text],pi)=>{
+  const c=el("section",{class:"card",id:p});
+  c.appendChild(el("h2",{},`${p} · ${anlass}`));
+  c.appendChild(el("p",{class:"prompt"},text));
+  const g=el("div",{class:"tools"});
+  TOOLS.forEach(t=>{
+    const box=el("div",{class:"tool"});
+    box.appendChild(el("h3",{},t.name));
+    box.appendChild(imgBox(img(t.id,p.toLowerCase()+"."+t.ext),t.name+" "+p));
+    ["K1","K2","K3","K4"].forEach(k=>box.appendChild(critRow(k,`${t.id}.${p}.${k}`)));
+    const sh=el("div",{class:"links"});sh.innerHTML=`<a href="../tests/${t.id}/${encodeURIComponent(SHOTS[t.id][pi])}" target="_blank">Screenshot vom Test</a>`;box.appendChild(sh);
+    g.appendChild(box)
+  });
+  c.appendChild(g);app.appendChild(c)
+});
+// K5
+(function(){
+  const c=el("section",{class:"card",id:"K5"});
+  c.appendChild(el("h2",{},"K5 · Anpassen per Folge-Prompt (auf das Bild von P1)"));
+  c.appendChild(el("p",{class:"prompt"},"Folge-Prompt: «"+FOLGE+"» Links das Bild von P1, rechts das angepasste Bild."));
+  const g=el("div",{class:"tools"});
+  TOOLS.forEach(t=>{
+    const box=el("div",{class:"tool"});
+    box.appendChild(el("h3",{},t.name));
+    const pr=el("div",{class:"pair"});
+    pr.appendChild(imgBox(img(t.id,"p1."+t.ext),t.name+" P1"));
+    pr.appendChild(imgBox(img(t.id,"folge-p1."+t.ext),t.name+" Folge"));
+    box.appendChild(pr);
+    if(t.id==="leonardo")box.appendChild(el("p",{class:"cap"},"Es zählt der zweite Versuch mit P1 als Referenzbild (Anhang B). Der erste Versuch ohne Referenzbild ergab ein neues Bild; das fliesst in K8 ein."));
+    box.appendChild(critRow("K5",`${t.id}.K5`));
+    g.appendChild(box)
+  });
+  c.appendChild(g);
+  c.appendChild(el("p",{class:"anchor"},"5 = "+CRIT.K5[2]+" · 3 = "+CRIT.K5[3]+" · 1 = "+CRIT.K5[4]));
+  app.appendChild(c)
+})();
+// K6–K10
+(function(){
+  const c=el("section",{class:"card",id:"K6-K10"});
+  c.appendChild(el("h2",{},"K6–K10 · einmal pro Tool"));
+  c.appendChild(el("p",{class:"prompt"},"Fakten aus dem Testprotokoll, der Nutzwertanalyse und der Muss-Prüfung. Die Punkte vergibst du selbst; die Screenshots öffnen sich in einem neuen Tab."));
+  const g=el("div",{class:"tools"});
+  TOOLS.forEach(t=>{
+    const box=el("div",{class:"tool"});
+    box.appendChild(el("h3",{},t.name));
+    ["K6","K7","K8","K9","K10"].forEach(k=>{
+      box.appendChild(critRow(k,`${t.id}.${k}`));
+      const ul=el("ul",{class:"facts"});FACTS[t.id][k].forEach(f=>ul.appendChild(el("li",{},f)));box.appendChild(ul);
+      if(k==="K9"||k==="K6"){const l=linkList(t.id,MUSS[t.id],`../tests/muss/${t.id}/`);l.insertAdjacentHTML("afterbegin","Nachweise: ");box.appendChild(l)}
+      if(k==="K8"){const l=linkList(t.id,SHOTS[t.id],`../tests/${t.id}/`);l.insertAdjacentHTML("afterbegin","Test-Screenshots: ");box.appendChild(l)}
+    });
+    g.appendChild(box)
+  });
+  c.appendChild(g);app.appendChild(c)
+})();
+// Zählen, Export
+function allIds(){const ids=[];TOOLS.forEach(t=>{PROMPTS.forEach(([p])=>["K1","K2","K3","K4"].forEach(k=>ids.push(`${t.id}.${p}.${k}`)));["K5","K6","K7","K8","K9","K10"].forEach(k=>ids.push(`${t.id}.${k}`))});return ids}
+const IDS=allIds();
+function update(){document.getElementById("cnt").textContent=IDS.filter(i=>S[i]).length}
+function buildOut(){
+  const o={bewerter:"Nicolas Hunger",datum:new Date().toLocaleDateString("de-CH"),werte:{},bemerkungen:document.getElementById("note").value.trim()};
+  TOOLS.forEach(t=>{o.werte[t.id]={};PROMPTS.forEach(([p])=>{o.werte[t.id][p]=["K1","K2","K3","K4"].map(k=>S[`${t.id}.${p}.${k}`]||null)});["K5","K6","K7","K8","K9","K10"].forEach(k=>o.werte[t.id][k]=S[`${t.id}.${k}`]||null)});
+  return "M306-BEWERTUNG-NICOLAS "+JSON.stringify(o)
+}
+function doCopy(){
+  const missing=IDS.filter(i=>!S[i]);const st=document.getElementById("status");const out=document.getElementById("out");
+  out.value=buildOut();
+  document.querySelectorAll(".crit").forEach(r=>r.classList.remove("missing"));
+  missing.forEach(id=>{const s=document.querySelector(`.seg[data-id="${CSS.escape(id)}"]`);if(s)s.parentElement.classList.add("missing")});
+  const done=()=>{st.className="status "+(missing.length?"warn":"ok");st.textContent=missing.length?`Kopiert – aber ${missing.length} Werte fehlen noch (orange markiert).`:"Kopiert. Jetzt in den Chat einfügen."};
+  try{navigator.clipboard.writeText(out.value).then(done,()=>{out.select();document.execCommand("copy");done()})}catch(e){out.select();try{document.execCommand("copy")}catch(_){}done()}
+  document.getElementById("finish").scrollIntoView({behavior:"smooth"})
+}
+document.getElementById("copy").onclick=doCopy;
+document.getElementById("copy2").onclick=doCopy;
+document.getElementById("note").value=S.__note||"";
+document.getElementById("note").oninput=e=>{S.__note=e.target.value;save()};
+document.getElementById("jump").onclick=()=>{const id=IDS.find(i=>!S[i]);if(!id){doCopy();return}const s=document.querySelector(`.seg[data-id="${CSS.escape(id)}"]`);s.scrollIntoView({behavior:"smooth",block:"center"});s.parentElement.classList.add("missing");s.querySelector("button").focus({preventScroll:true})};
+const lb=document.getElementById("lightbox");function openLB(src){lb.querySelector("img").src=src;lb.style.display="flex"}lb.onclick=()=>{lb.style.display="none"};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")lb.style.display="none"});
+update();
+</script>
+</body>
+</html>

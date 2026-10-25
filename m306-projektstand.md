@@ -1,6 +1,6 @@
 # M306 Abschlussprojekt – Projektstand
 
-Stand: 12.10.2026 · Diese Datei liegt im Git-Repository (Projektordner) und im Claude-Projekt (claude/m306-projektstand.md).
+Stand: 12.10.2026, Termine nachgeführt am 25.10.2026 (Abgabe So 25.10.2026, Präsentation nach der Abgabe; Word-Dokument massgebend im TBZ-OneDrive) · Diese Datei liegt im Git-Repository (Projektordner) und im Claude-Projekt (claude/m306-projektstand.md).
 
 > **Für KI-Assistenten:** Lies zuerst die Abschnitte «Offene Punkte für Nicolas» und «Regeln für die Zusammenarbeit». Die übrigen Abschnitte sind Hintergrund und Arbeitsprotokoll. Massgebend sind das Word-Dokument `M306_9_Abschlussprojekt_Hunger_Weisshaar.docx` und die Bewertungstabelle `tests/bewertung/Bewertung_K1-K10.xlsx`.
 
