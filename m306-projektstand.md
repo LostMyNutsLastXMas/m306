@@ -4,16 +4,20 @@ Stand: 12.10.2026, Termine nachgeführt am 25.10.2026 (Abgabe So 25.10.2026, Pr�
 
 > **Für KI-Assistenten:** Lies zuerst die Abschnitte «Offene Punkte für Nicolas» und «Regeln für die Zusammenarbeit». Die übrigen Abschnitte sind Hintergrund und Arbeitsprotokoll. Massgebend sind das Word-Dokument `M306_9_Abschlussprojekt_Hunger_Weisshaar.docx` und die Bewertungstabelle `tests/bewertung/Bewertung_K1-K10.xlsx`.
 
+## Stand 25.10.2026
+
+Abgegeben: `M306_9_Abschlussprojekt_Hunger_Weisshaar.pdf` (Dokumentation inkl. Anhang A) und `M306_9_Praesentation_Hunger_Weisshaar.pdf` (Folien, Präsentation am Mi 28.10.2026). Bewertung Nicolas, Test der Anleitung (25.10., 7 Min.), Reflexion Nicolas und Ist-Aufwand sind eingetragen; Pflichtenheft auf Anweisung der Lehrperson entfernt; Checkliste «Dokumentenbewertung» entfernt. Die Word-Datei im Repo ist die Endfassung (ohne Überarbeitungen).
+
 ## Offene Punkte für Nicolas (Stand 12.10.2026)
 
 Erledigte Punkte mit [x] abhaken und die Datei committen und pushen.
 
 ### 1. Bewertung K1–K10 – bis spätestens Mi 14.10. (M3 Tool-Entscheid)
 
-- [ ] Blatt «K1–K4 pro Prompt»: gelbe Spalten «Nicolas» ausfüllen, D = K1 Bildqualität, G = K2 Prompt-Treue, J = K3 Text im Bild, M = K4 Stilvielfalt, jeweils Zeilen 5–22 (Gemini P1–P6 = Zeilen 5–10, ChatGPT P1–P6 = 11–16, Leonardo.Ai P1–P6 = 17–22), total 72 Werte
-- [ ] Blatt «Nutzwert»: K5–K10 in den gelben Zellen E9:E14 (Gemini), H9:H14 (ChatGPT) und K9:K14 (Leonardo.Ai), total 18 Werte. K1–K4 berechnet die Tabelle selbst aus dem ersten Blatt.
-- [ ] Rot markierte Abweichungen (2 oder mehr Punkte Unterschied zu Lucas) gemeinsam mit Lucas anschauen und neu bewerten (Risiko R3)
-- [ ] Excel committen und pushen, Lucas Bescheid geben. Lucas trägt danach die Mittelwerte im Word nach (Nutzwertanalyse, Evaluation, Anhang B Spalte «Nicolas», Zusammenfassung).
+- [x] Blatt «K1–K4 pro Prompt»: gelbe Spalten «Nicolas» ausfüllen, D = K1 Bildqualität, G = K2 Prompt-Treue, J = K3 Text im Bild, M = K4 Stilvielfalt, jeweils Zeilen 5–22 (Gemini P1–P6 = Zeilen 5–10, ChatGPT P1–P6 = 11–16, Leonardo.Ai P1–P6 = 17–22), total 72 Werte
+- [x] Blatt «Nutzwert»: K5–K10 in den gelben Zellen E9:E14 (Gemini), H9:H14 (ChatGPT) und K9:K14 (Leonardo.Ai), total 18 Werte. K1–K4 berechnet die Tabelle selbst aus dem ersten Blatt.
+- [ ] Rot markierte Abweichungen (2 oder mehr Punkte Unterschied zu Lucas) gemeinsam mit Lucas anschauen und neu bewerten (Risiko R3) → 25.10.: nicht gemeinsam neu bewertet (Zeit), Mittelwerte bleiben; in Evaluation und Risiko-Überprüfung vermerkt.
+- [x] Excel committen und pushen, Lucas Bescheid geben. Lucas trägt danach die Mittelwerte im Word nach (Nutzwertanalyse, Evaluation, Anhang B Spalte «Nicolas», Zusammenfassung).
 
 Hinweise:
 - Ganze Punkte 1–5 nach der Skala (Blatt «Skala» im Excel und Tabelle «Bewertungsskala» im Word, Kapitel Lastenheft).
@@ -22,34 +26,34 @@ Hinweise:
 
 ### 2. Test der Anleitung mit Testperson – bis Sa 17.10. (M4, Paket 5.1, Ziel 4)
 
-- [ ] Testperson ausserhalb des Teams finden, die zur Zielgruppe gehört (gelegentliche Nutzung, idealerweise noch ohne ChatGPT-Konto). Einverständnis einholen, dass Name, Alter und Beruf in der Dokumentation stehen.
-- [ ] Test durchführen: Die Testperson arbeitet nur mit der Kurzanleitung «Bilder erstellen mit ChatGPT» (Word, Kapitel Realisierung, Abschnitt 1). Aufgabe: «Ein Bild für die Einladung zu einem Grillfest im Team erstellen und speichern». Nicht helfen. Zeit vom Öffnen von chatgpt.com bis zum gespeicherten Bild messen (Ziel: höchstens 15 Minuten).
-- [ ] Festhalten: Name, Alter, Beruf, vorher Konto bei ChatGPT (ja/nein), Datum, Zeit in Minuten, Ergebnis (erfüllt / nicht erfüllt), Probleme, Rückmeldung, Anpassungen an der Anleitung. Ergebnisbild ablegen, z.B. in `tests/testperson/`.
-- [ ] Eintragen im Word (oder Ergebnisse an Lucas schicken):
+- [x] Testperson ausserhalb des Teams finden, die zur Zielgruppe gehört (gelegentliche Nutzung, idealerweise noch ohne ChatGPT-Konto). Einverständnis einholen, dass Name, Alter und Beruf in der Dokumentation stehen.
+- [x] Test durchführen: Die Testperson arbeitet nur mit der Kurzanleitung «Bilder erstellen mit ChatGPT» (Word, Kapitel Realisierung, Abschnitt 1). Aufgabe: «Ein Bild für die Einladung zu einem Grillfest im Team erstellen und speichern». Nicht helfen. Zeit vom Öffnen von chatgpt.com bis zum gespeicherten Bild messen (Ziel: höchstens 15 Minuten).
+- [x] Festhalten: Name, Alter, Beruf, vorher Konto bei ChatGPT (ja/nein), Datum, Zeit in Minuten, Ergebnis (erfüllt / nicht erfüllt), Probleme, Rückmeldung, Anpassungen an der Anleitung. Ergebnisbild ablegen, z.B. in `tests/testperson/`.
+- [x] Eintragen im Word (oder Ergebnisse an Lucas schicken):
   - Realisierung, Abschnitt 2 «Test der Anleitung»: gelbe Platzhalter in der Tabelle ersetzen
   - Kapitel Organigramm, Tabelle «Rollen und Aufgaben», Zeile «Fachvertreter»: «Testperson aus der Zielgruppe (noch offen)» ersetzen
   - Zusammenfassung: Abschnitt 1 «Ergebnisse» (Punkt «Anleitung») und Abschnitt 2 «Zielerreichung» (Ziel 4)
-- [ ] Anleitung korrigieren, falls die Testperson irgendwo nicht weiterkam (Lieferobjekt von 5.1: «Testprotokoll, korrigierte Anleitung»)
+- [x] Anleitung korrigieren, falls die Testperson irgendwo nicht weiterkam (Lieferobjekt von 5.1: «Testprotokoll, korrigierte Anleitung»)
 
 ### 3. Reflexion – bis spätestens Mi 21.10. (Paket 7.2)
 
-- [ ] Word, Kapitel «Reflexion (individuell je Teammitglied)»: gelben Platzhalter unter «Nicolas Hunger» ersetzen
-- [ ] Aufbau wie bei Lucas: drei Absätze in Ich-Form mit fetten Einstiegen «Was lief gut?», «Was würde ich anders machen?» und «Gelerntes / Nächste Entwicklungsschritte:», insgesamt ca. 150–250 Wörter. Eigene Erfahrungen (Vorgabe: «Eigene Erkenntnisse und Reflexion jedes Teammitglieds»).
+- [x] Word, Kapitel «Reflexion (individuell je Teammitglied)»: gelben Platzhalter unter «Nicolas Hunger» ersetzen
+- [x] Aufbau wie bei Lucas: drei Absätze in Ich-Form mit fetten Einstiegen «Was lief gut?», «Was würde ich anders machen?» und «Gelerntes / Nächste Entwicklungsschritte:», insgesamt ca. 150–250 Wörter. Eigene Erfahrungen (Vorgabe: «Eigene Erkenntnisse und Reflexion jedes Teammitglieds»).
 
 ### 4. Präsentation – Mi 21.10. (Pakete 6.1 und 6.2, gemeinsam mit Lucas)
 
-- [ ] Folien zusammen mit Lucas erstellen, Aufteilung absprechen
-- [ ] Checkliste «Dokumentenbewertung», Abschnitt «Präsentation und Demonstration», beachten: Präsentationsfolien, Live-Demo mit Prompt-Cases, User-Dokumentation (= Kurzanleitung)
+- [x] Folien zusammen mit Lucas erstellen, Aufteilung absprechen
+- [x] Checkliste «Dokumentenbewertung», Abschnitt «Präsentation und Demonstration», beachten: Präsentationsfolien, Live-Demo mit Prompt-Cases, User-Dokumentation (= Kurzanleitung)
 - Live-Demo: Prompts P1, P3, P5 und ein Folge-Prompt (Word, Realisierung, Abschnitt 3). Den Probelauf macht Lucas (Paket 5.2).
 
 ### 5. Tatsächlicher Aufwand – vor der Abgabe
 
-- [ ] Eigene Stunden für das ganze Projekt schätzen und Lucas melden. Sie kommen in die Zusammenfassung, Abschnitt 3 «Vergleich geplant/tatsächlich» (geplant für Nicolas: 15,75 h).
+- [x] Eigene Stunden für das ganze Projekt schätzen und Lucas melden. Sie kommen in die Zusammenfassung, Abschnitt 3 «Vergleich geplant/tatsächlich» (geplant für Nicolas: 15,75 h).
 
 ### 6. Mit Lucas klären
 
-- [ ] Aufwandverteilung: Paket 4.1 «Tool einrichten, Anleitung schreiben» (3 h) steht im Plan bei Nicolas, die Kurzanleitung hat aber Lucas geschrieben. Der Plan zeigt Lucas ca. 24,25 h und Nicolas ca. 15,75 h, im Teamkapitel steht als Teamziel «je ca. 20 Stunden». Entscheiden, ob Nicolas andere Pakete übernimmt (z.B. 6.1 Präsentation). Planänderungen immer in der Excel-Planung UND im Gantt-Plan im Word nachführen.
-- [ ] Risiko-Überprüfung bei M3 (14.10.) und M4 (17.10.): Stand der eigenen Risiken R1, R2 und R6 melden (Nicolas ist dort Risiko-Verantwortlicher)
+- [ ] Aufwandverteilung: Paket 4.1 «Tool einrichten, Anleitung schreiben» (3 h) steht im Plan bei Nicolas, die Kurzanleitung hat aber Lucas geschrieben. Der Plan zeigt Lucas ca. 24,25 h und Nicolas ca. 15,75 h, im Teamkapitel steht als Teamziel «je ca. 20 Stunden». Entscheiden, ob Nicolas andere Pakete übernimmt (z.B. 6.1 Präsentation). Planänderungen immer in der Excel-Planung UND im Gantt-Plan im Word nachführen. → offen; Ist-Aufwand Lucas ca. 13 h, Nicolas ca. 10 h in der Zusammenfassung.
+- [x] Risiko-Überprüfung bei M3 (14.10.) und M4 (17.10.): Stand der eigenen Risiken R1, R2 und R6 melden (Nicolas ist dort Risiko-Verantwortlicher)
 
 ## Regeln für die Zusammenarbeit
 
